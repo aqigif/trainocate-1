@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { addItem } from "../store/action/todoAction";
 
 function Home() {
+  const dispatch = useDispatch();  
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
-  const [result, setResult] = useState([]);
+  // const [result, setResult] = useState([]);
+  const { result } = useSelector((state) => state)
 
   useEffect(() => {
     if (result.length > 0) {
@@ -13,12 +17,13 @@ function Home() {
   }, [result]);
 
   const handleAdd = () => {
-    setResult((prev) => [...prev, input]);
-    setInput("");
+    dispatch(addItem(input));
+    setInput("")
   };
 
   const handleDelete = (idx) => {
-    setResult((prev) => prev.filter((_, index) => index !== idx));
+    // setResult((prev) => prev.filter((_, index) => index !== idx));
+    console.log(idx)
   };
 
   const handleChangeText = (value) => {
@@ -44,9 +49,12 @@ function Home() {
       <div style={{ flex: 1, flexDirection: "row" }}>
         <ul>
           {result.map((item, index) => (
-            <li onClick={() => handleDelete(index)} key={index}>
+            <div>
+              <li onClick={() => handleDelete(index)} key={index}>
               {item}
             </li>
+            <button>delete</button>
+            </div>
           ))}
         </ul>
       </div>
