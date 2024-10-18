@@ -6,8 +6,8 @@ const useHome = () => {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
-  // const [result, setResult] = useState([]);
-  const { result } = useSelector((state) => state.productList);
+  const result = useSelector((state) => state.productList.result);
+  const isLoading = useSelector((state) => state.productList.isLoading);
 
   useEffect(() => {
     if (result.length > 0) {
@@ -34,7 +34,7 @@ const useHome = () => {
     }
   };
 
-  return { error, handleChangeText, handleDelete, handleAdd, result, input };
+  return { error, handleChangeText, handleDelete, handleAdd, result, input, isLoading };
 };
 
 export default useHome;

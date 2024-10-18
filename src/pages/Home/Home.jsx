@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import useHome from "./Home.handler";
 
 function Home() {
-  const { handleAdd, handleChangeText, handleDelete, error, result, input } =
+  const { handleAdd, handleChangeText, handleDelete, error, result, input, isLoading } =
     useHome();
 
   return (
@@ -15,6 +15,7 @@ function Home() {
         />
         <button onClick={handleAdd}>add</button>
       </div>
+      {isLoading && <p>Loading...</p>}
       {<p style={{ color: "red", fontSize: 10 }}>{error}</p>}
       <div style={{ flex: 1, flexDirection: "row" }}>
         <ul>
