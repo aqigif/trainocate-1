@@ -7,7 +7,7 @@ const useHome = () => {
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
   // const [result, setResult] = useState([]);
-  const { result } = useSelector((state) => state);
+  const { result } = useSelector((state) => state.productList);
 
   useEffect(() => {
     if (result.length > 0) {
