@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../store/action/todoAction";
+import { addItem } from "../../store/action";
 
 const useHome = () => {
   const dispatch = useDispatch();
