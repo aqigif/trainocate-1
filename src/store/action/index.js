@@ -1,1 +1,1 @@
-export { addItem } from './productList.action';
+export { addItem } from './products/productList.action';
