@@ -1,11 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import useProfile from "./Profile.handler";
 
 function Profile() {
-  const navigate = useNavigate()
-
-  const handleBackToHome = () => {
-    navigate('/')
-  }
+  const {handleBackToHome} = useProfile()
   return (
     <>
       <p>Profile</p>
