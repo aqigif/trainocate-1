@@ -1,4 +1,4 @@
-import { ADD_ITEM, ADD_ITEM_FAILED, ADD_ITEM_SUCCESS } from "../../action.types";
+import { ADD_ITEM } from "../../action.types";
 
 const initialState = {
   input: "",
@@ -9,21 +9,21 @@ const initialState = {
 
 const productList = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_ITEM:
+    case ADD_ITEM+'/pending':
       return {
         ...state,
         input: "",
         error: "",
         isLoading: true,
       };
-    case ADD_ITEM_SUCCESS:
+    case ADD_ITEM+'/fulfilled':
       return {
         ...state,
-        result: [...state.result, action.payload],
+        result: [...state.result, action.payload.name],
         isLoading: false,
       };
 
-    case ADD_ITEM_FAILED:
+    case ADD_ITEM+'/rejected':
       return {
         ...state,
         error: action.payload,

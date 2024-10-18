@@ -1,23 +1,16 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import { addProduct } from "../../../services";
-import { ADD_ITEM, ADD_ITEM_FAILED, ADD_ITEM_SUCCESS } from "../../action.types";
+import { ADD_ITEM } from "../../action.types";
 
-export const addItem = (input) => async (dispatch, getState) => {
-  dispatch({
-    type: ADD_ITEM,
-  });
+
+export const addItem = createAsyncThunk(ADD_ITEM, async (thunkAPI) => {
   try {
-    await addProduct({
-      name: input,
+    const res =  await addProduct({
+      name: 'input',
       job: "leader",
     });
-    dispatch({
-      type: ADD_ITEM_SUCCESS,
-      payload: input,
-    });
-  } catch (error) {
-    dispatch({
-      type: ADD_ITEM_FAILED,
-      payload: "Terjadi kesalahan",
-    });
+    return res.data
+  } catch (err) {
+    return thunkAPI.rejectWithValue({ error: err.message })
   }
-};
+})
