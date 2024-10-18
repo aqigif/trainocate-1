@@ -6,8 +6,6 @@ const initialState = {
 };
 
 const productList = (state = initialState, action) => {
-  // eslint-disable-next-line default-case
-  console.log("action yang dilakukan", action);
   switch (action.type) {
     case "ADD_ITEM":
       return {

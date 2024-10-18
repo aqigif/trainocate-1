@@ -15,5 +15,4 @@ export const addItem = (input) => (dispatch, getState) => {
       payload: 'Terjadi kesalahan'
     })
   }
-  console.log(getState())
 }

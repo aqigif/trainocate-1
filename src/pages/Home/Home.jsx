@@ -20,7 +20,7 @@ function Home() {
       <div style={{ flex: 1, flexDirection: "row" }}>
         <ul>
           {result.map((item, index) => (
-            <div>
+            <div key={index}>
               <li onClick={() => handleDelete(index)} key={index}>
                 {item}
               </li>
