@@ -1,3 +1,5 @@
+import { ADD_ITEM, ADD_ITEM_FAILED, ADD_ITEM_SUCCESS } from "../../action.types";
+
 const initialState = {
   input: "",
   error: "",
@@ -7,21 +9,21 @@ const initialState = {
 
 const productList = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_ITEM":
+    case ADD_ITEM:
       return {
         ...state,
         input: "",
         error: "",
         isLoading: true,
       };
-    case "ADD_ITEM_SUCCESS":
+    case ADD_ITEM_SUCCESS:
       return {
         ...state,
         result: [...state.result, action.payload],
         isLoading: false,
       };
 
-    case "ADD_ITEM_FAILED":
+    case ADD_ITEM_FAILED:
       return {
         ...state,
         error: action.payload,

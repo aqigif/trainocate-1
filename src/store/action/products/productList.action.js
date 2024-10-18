@@ -1,8 +1,9 @@
 import { addProduct } from "../../../services";
+import { ADD_ITEM, ADD_ITEM_FAILED, ADD_ITEM_SUCCESS } from "../../action.types";
 
 export const addItem = (input) => async (dispatch, getState) => {
   dispatch({
-    type: "ADD_ITEM",
+    type: ADD_ITEM,
   });
   try {
     await addProduct({
@@ -10,12 +11,12 @@ export const addItem = (input) => async (dispatch, getState) => {
       job: "leader",
     });
     dispatch({
-      type: "ADD_ITEM_SUCCESS",
+      type: ADD_ITEM_SUCCESS,
       payload: input,
     });
   } catch (error) {
     dispatch({
-      type: "ADD_ITEM_FAILED",
+      type: ADD_ITEM_FAILED,
       payload: "Terjadi kesalahan",
     });
   }
